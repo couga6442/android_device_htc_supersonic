@@ -22,15 +22,10 @@
 # The gps config appropriate for this device
 PRODUCT_COPY_FILES += \
     device/htc/supersonic/prebuilt/etc/gps.conf:system/etc/gps.conf
-	
-# Market Fix
-PRODUCT_COPY_FILES += \
-    device/htc/supersonic/prebuilt/etc/init.d/99marketfix:system/etc/init.d/99marketfix
 
 PRODUCT_COPY_FILES += \
     device/htc/supersonic/prebuilt/root/init.supersonic.rc:root/init.supersonic.rc \
     device/htc/supersonic/prebuilt/root/init.supersonic.usb.rc:root/init.supersonic.usb.rc \
-	device/htc/supersonic/prebuilt/root/init.rc:root/init.rc \
     device/htc/supersonic/prebuilt/root/ueventd.supersonic.rc:root/ueventd.supersonic.rc 
 
 $(call inherit-product-if-exists, vendor/htc/supersonic/supersonic-vendor.mk)
@@ -47,8 +42,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 DEVICE_PACKAGE_OVERLAYS += device/htc/supersonic/overlay
 
 PRODUCT_COPY_FILES += \
-    frameworks/base/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml \
-    frameworks/base/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml
+    frameworks/native/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml
 
 # media config xml file
 PRODUCT_COPY_FILES += \
@@ -61,15 +55,8 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES := \
     gps.supersonic \
     lights.supersonic \
-    sensors.supersonic
-	
-# OMX Stuff
-PRODUCT_PACKAGES := \
-    libmm-omxcore \
-    Torch \
-    GooManager \
-    PopNetwork
-	
+    sensors.supersonic \
+#    camera.qsd8k
 
 # USB
 ADDITIONAL_DEFAULT_PROPERTIES += \
@@ -119,15 +106,8 @@ $(call inherit-product, device/htc/qsd8k-common/qsd8k.mk)
 
 $(call inherit-product-if-exists, vendor/htc/supersonic/supersonic-vendor.mk)
 
-
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
-PRODUCT_NAME := cm_supersonic
+PRODUCT_NAME := htc_supersonic
 PRODUCT_DEVICE := supersonic
-PRODUCT_MODEL := PC36100
-
-# Goo updater app
-PRODUCT_PROPERTY_OVERRIDES += \
-ro.goo.developerid=jmz \
-ro.goo.rom=$(TARGET_PRODUCT) \
-ro.goo.version=26
+PRODUCT_MODEL := Full Android on Supersonic
