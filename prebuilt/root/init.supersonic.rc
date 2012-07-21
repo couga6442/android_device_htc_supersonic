@@ -120,6 +120,7 @@ service iprenew_wlan0 /system/bin/dhcpcd -n
     oneshot
 
 service dhcpWimax /system/bin/dhcpcd -ABKL -f /etc/wimax/dhcp/wimaxDhcp.conf wimax0
+    class main
     disabled
     oneshot
 
@@ -148,18 +149,21 @@ service sequansd /system/bin/sequansd /etc/wimax/sequansd/sequansd_app.xml
     oneshot
 
 service wimaxDhcpRelease /system/bin/wimaxDhcpRelease
+    class main
     user root
     group root
     disabled
     oneshot
 
 service wimaxDhcpRenew /system/bin/wimaxDhcpRenew
+    class main
     user root
     group root
     disabled
     oneshot
 
 service wimaxAddRoute /system/bin/wimaxAddRoute
+    class main
     user root
     group root
     disabled
@@ -195,11 +199,10 @@ service setWMXPropd /system/bin/setWiMAXPropDaemond
     group root
     oneshot
 
-# getWMXPropd daemon
-service getWMXPropd /system/bin/getWiMAXPropDaemond
+service dmagent /system/bin/dmagent -N -P19 -VSY
+ 	socket dmagent stream 660 root radio
     user root
-    group root
-    oneshot
+    group radio cache inet misc
 
 service hciattach /system/bin/brcm_patchram_plus --enable_hci --enable_lpm \
     --baudrate 3000000 --patchram /etc/firmware/bcm4329.hcd /dev/ttyHS0
