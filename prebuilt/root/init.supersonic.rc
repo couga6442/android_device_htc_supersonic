@@ -97,6 +97,10 @@ on boot
     write /proc/sys/net/core/wmem_max 524288
     write /proc/sys/net/core/rmem_max 524288
 
+    # Force loading of modem and Q6 images
+    service load-modem /system/bin/load-modem.sh
+    oneshot
+
 service wpa_supplicant /system/bin/logwrapper /system/bin/wpa_supplicant \
     -Dwext -iwlan0 -c/data/misc/wifi/wpa_supplicant.conf
 #   we will start as root and wpa_supplicant will switch to user wifi
@@ -124,22 +128,19 @@ service dhcpWimax /system/bin/dhcpcd -ABKL -f /etc/wimax/dhcp/wimaxDhcp.conf wim
     disabled
     oneshot
 
-service modem /system/xbin/wireless_modem
-    user system
-    group system radio
-    disabled
 
-on property:service.modem.enable=1
-    start modem
-
-on property:service.modem.enable=0
-    stop modem
 
 # compass/accelerometer daemon
 service akmd /system/bin/akmd
     class main
     user compass
     group compass misc input
+service hciattach /system/bin/brcm_patchram_plus --enable_hci --enable_lpm \
+    --baudrate 3000000 --patchram /etc/firmware/bcm4329.hcd /dev/ttyHS0
+    class main
+    user bluetooth
+    group bluetooth net_bt_admin
+    disabled
 
 service sequansd /system/bin/sequansd /etc/wimax/sequansd/sequansd_app.xml
     user root
@@ -187,6 +188,16 @@ service wimaxDumpLastKmsg /system/bin/wimaxDumpLastKmsg /data/wimax/log
     disabled
     oneshot
 
+service wmxCfgItf /system/bin/wimaxConfigInterface
+    user root
+    group root
+    disabled
+    oneshot
+
+service wimaxDaemon /system/bin/wimaxDaemon
+    user root
+    group root
+
 # wimax_mtd daemon
 service wimax_mtd /system/bin/wimax_mtd
    user root
@@ -199,17 +210,27 @@ service setWMXPropd /system/bin/setWiMAXPropDaemond
     group root
     oneshot
 
+# getWMXPropd daemon
+service getWMXPropd /system/bin/getWiMAXPropDaemond
+    user root
+    group root
+    oneshot
+
 service dmagent /system/bin/dmagent -N -P19 -VSY
  	socket dmagent stream 660 root radio
     user root
     group radio cache inet misc
 
-service hciattach /system/bin/brcm_patchram_plus --enable_hci --enable_lpm \
-    --baudrate 3000000 --patchram /etc/firmware/bcm4329.hcd /dev/ttyHS0
-    class main
-    user bluetooth
-    group bluetooth net_bt_admin
+service modem /system/bin/wireless_modem
+    user system
+    group system radio
     disabled
+
+on property:service.modem.enable=1
+    start modem
+
+on property:service.modem.enable=0
+    stop modem
 
 service qcom-post-boot /system/bin/sh /system/etc/init.qcom.post_boot.sh
     class late_start
