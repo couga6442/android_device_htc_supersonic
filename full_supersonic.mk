@@ -122,4 +122,4 @@ PRODUCT_PROPERTY_OVERRIDES += \
         ro.goo.developerid=jmz \
 	ro.goo.board=supersonic \
 	ro.goo.rom=cm10_supersonic \
-	ro.goo.version=6
+	ro.goo.version=7
