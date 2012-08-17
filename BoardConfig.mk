@@ -76,7 +76,3 @@ BOARD_HAS_NO_SELECT_BUTTON := 1
 
 TARGET_KERNEL_CONFIG    := evervolv_supersonic_defconfig
 TARGET_PREBUILT_KERNEL  := device/htc/supersonic/prebuilt/root/kernel
-
-##Testing
-COMMON_GLOBAL_CFLAGS += -DQCOM_ROTATOR_KERNEL_FORMATS
-TARGET_USES_OVERLAY :=false
