@@ -1,11 +1,10 @@
-CM9 for the EVO 4G
+CM10 for the EVO 4G
 
 ## Info
 
 |||
 |-----------------------------------:|:--------------------------|
 |**Discussion thread**: | http://forum.xda-developers.com/showthread.php?t=1625096
-|**Bug List**:		| http://code.google.com/p/cm9-supersonic/
 
 ## Building 
 
@@ -14,35 +13,35 @@ CM9 for the EVO 4G
 
 ### Prepare to download sources
 ```bash
-mkdir ~/cm9
-cd ~/cm9/
+mkdir ~/cm10
+cd ~/cm10/
 curl https://dl-ssl.google.com/dl/googlesource/git-repo/repo > ~/bin/repo
 chmod a+x ~/bin/repo
-repo init -u git://github.com/CyanogenMod/android.git -b ics
+repo init -u git://github.com/CyanogenMod/android.git -b jellybean
 ```
 
 ### Download the source
 ```bash
-cd ~/cm9
+cd ~/cm10
 repo sync -j16
 ```
 NOTE: This WILL take a long time.
 
 ### Finish setting up repo
 ```bash
-wget -O .repo/local_manifest.xml https://raw.github.com/jmztaylor/android_device_htc_supersonic/master/Manifest/local_manifest.xml
+wget -O .repo/local_manifest.xml https://raw.github.com/jmztaylor/android_device_htc_supersonic/jellybean/Manifest/local_manifest.xml
 ```
 
 ### Download my sources
 ```bash
-cd ~/cm9
+cd ~/cm10
 repo sync -j16
 ```
 
 ### Build
 Make sure we're in ~/cm9...
 ```bash
-cd ~/cm9
+cd ~/cm10
 ```
 Pull in the prebuilts, like Rom Manager...
 ```bash
