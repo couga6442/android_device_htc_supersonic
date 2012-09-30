@@ -117,9 +117,3 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 PRODUCT_NAME := htc_supersonic
 PRODUCT_DEVICE := supersonic
 PRODUCT_MODEL := Full Android on Supersonic
-
-PRODUCT_PROPERTY_OVERRIDES += \
-        ro.goo.developerid=jmz \
-	ro.goo.board=supersonic \
-	ro.goo.rom=cm10_supersonic \
-	ro.goo.version=10
