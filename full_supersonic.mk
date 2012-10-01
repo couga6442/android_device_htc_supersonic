@@ -55,14 +55,11 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES := \
     gps.supersonic \
     lights.supersonic \
-    sensors.supersonic \
-#    camera.qsd8k
+    sensors.supersonic
 
 PRODUCT_PACKAGES := \
     libmm-omxcore \
-    Torch \
-    GooManager \
-    PopNetwork
+    Torch
 	
 # USB
 ADDITIONAL_DEFAULT_PROPERTIES += \
