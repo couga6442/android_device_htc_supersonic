@@ -28,6 +28,7 @@ USE_CAMERA_STUB := true
 TARGET_LEGACY_CAMERA := true
 TARGET_CAMERA_WRAPPER := qsd8k
 BOARD_HAVE_HTC_FFC := true
+BOARD_USES_LEGACY_RIL := true
 
 # inherit from the proprietary version
 -include vendor/htc/supersonic/BoardConfigVendor.mk
