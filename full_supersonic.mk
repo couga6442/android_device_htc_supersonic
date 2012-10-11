@@ -29,6 +29,7 @@ PRODUCT_COPY_FILES += \
     device/htc/supersonic/prebuilt/root/ueventd.supersonic.rc:root/ueventd.supersonic.rc 
 
 $(call inherit-product-if-exists, vendor/htc/supersonic/supersonic-vendor.mk)
+$(call inherit-product-if-exists, vendor/qcom/proprietary/qcom-vendor-blobs.mk)
 
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.com.google.clientidbase=android-sprint-us \
