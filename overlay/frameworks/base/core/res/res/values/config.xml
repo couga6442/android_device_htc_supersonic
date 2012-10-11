@@ -218,7 +218,7 @@
     <bool name="config_mms_content_disposition_support">false</bool>
 
 	<!-- Set and Unsets WiMAX -->
-	<bool name="config_wimaxEnabled">true</bool>
+	<bool name="config_wimaxEnabled">false</bool>
     <!-- Location of the wimax framwork jar location -->
     <string name="config_wimaxServiceJarLocation">/system/framework/wimax-api.jar</string>
     <!-- Location of the wimax native library locaiton -->
