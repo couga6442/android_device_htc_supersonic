@@ -5,10 +5,10 @@ $(call inherit-product, device/htc/supersonic/full_supersonic.mk)
 $(call inherit-product, vendor/aokp/config/common_drm_phone.mk)
 
 # Inherit some more common AOKP stuff.
-$(call inherit-product, vendor/aokp/config/common_phone.mk
+$(call inherit-product, vendor/aokp/config/common_phone.mk)
 
 # Inheriting even more common AOKP stuff.
-$(call inherit-product, vendor/aokp/config/common.mk
+$(call inherit-product, vendor/aokp/config/common.mk)
 
 # Inherit some common AOKP stuff
 $(call inherit-product, vendor/aokp/config/cdma.mk)
