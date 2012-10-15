@@ -1,16 +1,22 @@
 # Inherit AOSP device configuration for supersonic.
 $(call inherit-product, device/htc/supersonic/full_supersonic.mk)
 
-# Inherit some common CM stuff.
-$(call inherit-product, vendor/cm/config/common_full_phone.mk)
+# Inherit some common AOKP stuff.
+$(call inherit-product, vendor/aokp/config/common_drm_phone.mk)
 
-# Inherit some common CM stuff
-$(call inherit-product, vendor/cm/config/cdma.mk)
+# Inherit some more common AOKP stuff.
+$(call inherit-product, vendor/aokp/config/common_phone.mk
+
+# Inheriting even more common AOKP stuff.
+$(call inherit-product, vendor/aokp/config/common.mk
+
+# Inherit some common AOKP stuff
+$(call inherit-product, vendor/aokp/config/cdma.mk)
 
 #
 # Setup device specific product configuration.
 #
-PRODUCT_NAME := cm_supersonic
+PRODUCT_NAME := aokp_supersonic
 PRODUCT_BRAND := sprint
 PRODUCT_DEVICE := supersonic
 PRODUCT_MODEL := PC36100

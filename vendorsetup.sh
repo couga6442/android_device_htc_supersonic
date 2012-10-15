@@ -1,2 +1,2 @@
-add_lunch_combo cm_supersonic-userdebug
-add_lunch_combo cm_supersonic-eng
+add_lunch_combo aokp_supersonic-userdebug
+add_lunch_combo aokp_supersonic-eng
